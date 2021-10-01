@@ -13,6 +13,8 @@
 		3DB2B0242706B11900D3A517 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3DB2B0222706B11900D3A517 /* Main.storyboard */; };
 		3DB2B0262706B11D00D3A517 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 3DB2B0252706B11D00D3A517 /* Assets.xcassets */; };
 		3DB2B0292706B11D00D3A517 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 3DB2B0272706B11D00D3A517 /* LaunchScreen.storyboard */; };
+		3DB2B0332706B66900D3A517 /* Notes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB2B0322706B66900D3A517 /* Notes.swift */; };
+		3DB2B0362706C86E00D3A517 /* AddNoteViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3DB2B0352706C86E00D3A517 /* AddNoteViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +26,8 @@
 		3DB2B0252706B11D00D3A517 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		3DB2B0282706B11D00D3A517 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		3DB2B02A2706B11D00D3A517 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		3DB2B0322706B66900D3A517 /* Notes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Notes.swift; sourceTree = "<group>"; };
+		3DB2B0352706C86E00D3A517 /* AddNoteViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddNoteViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -59,7 +63,9 @@
 				3DB2B01C2706B11900D3A517 /* AppDelegate.swift */,
 				3DB2B01E2706B11900D3A517 /* SceneDelegate.swift */,
 				3DB2B0202706B11900D3A517 /* ViewController.swift */,
+				3DB2B0352706C86E00D3A517 /* AddNoteViewController.swift */,
 				3DB2B0222706B11900D3A517 /* Main.storyboard */,
+				3DB2B0322706B66900D3A517 /* Notes.swift */,
 				3DB2B0252706B11D00D3A517 /* Assets.xcassets */,
 				3DB2B0272706B11D00D3A517 /* LaunchScreen.storyboard */,
 				3DB2B02A2706B11D00D3A517 /* Info.plist */,
@@ -140,6 +146,8 @@
 				3DB2B0212706B11900D3A517 /* ViewController.swift in Sources */,
 				3DB2B01D2706B11900D3A517 /* AppDelegate.swift in Sources */,
 				3DB2B01F2706B11900D3A517 /* SceneDelegate.swift in Sources */,
+				3DB2B0362706C86E00D3A517 /* AddNoteViewController.swift in Sources */,
+				3DB2B0332706B66900D3A517 /* Notes.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -296,7 +304,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = ru.MihailIonin.NotesApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -315,7 +323,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = ru.MihailIonin.NotesApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
