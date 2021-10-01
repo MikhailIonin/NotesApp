@@ -29,7 +29,6 @@ class Notes {
         }
         
         set {
-            
             if let data = try? PropertyListEncoder().encode(newValue) {
                 defaults.set(data, forKey: "notesArray")
             }
@@ -39,6 +38,10 @@ class Notes {
     func saveNote(title: String, body: String) {
         let note = Note(noteTitle: title, noteBody: body)
         notesArray.append(note)
+    }
+    
+    func updateNote(title: String, body: String) {
+        let note = Note(noteTitle: title, noteBody: body)
     }
 }
 

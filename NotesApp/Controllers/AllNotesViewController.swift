@@ -1,5 +1,5 @@
 //
-//  ViewController.swift
+//  AllNotesViewController.swift
 //  NotesApp
 //
 //  Created by Ионин Михаил Викторович on 01.10.2021.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
+class AllNotesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     @IBOutlet weak var table: UITableView!
     
@@ -24,6 +24,16 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         self.table.reloadData()
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        let vc = segue.destination as! AddNoteViewController
+        
+        if segue.identifier == "editNote" {
+            vc.note = Notes.shared.notesArray[table.indexPathForSelectedRow!.row] 
+            vc.update = true
+        }
+    }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return Notes.shared.notesArray.count
     }
@@ -34,7 +44,5 @@ class ViewController: UIViewController, UITableViewDelegate, UITableViewDataSour
         cell.detailTextLabel?.text = Notes.shared.notesArray[indexPath.row].noteBody
         return cell
     }
-
-
 }
 
