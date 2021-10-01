@@ -11,6 +11,8 @@ class AllNotesViewController: UIViewController, UITableViewDelegate, UITableView
     
     @IBOutlet weak var table: UITableView!
     
+    //var selectedRow: Int?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -24,13 +26,26 @@ class AllNotesViewController: UIViewController, UITableViewDelegate, UITableView
         self.table.reloadData()
     }
     
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//
+//        guard let addNoteVC = segue.destination as? AddNoteViewController else { return }
+//
+//        if segue.identifier == "editNote" {
+//            addNoteVC.note = Notes.shared.notesArray[table.indexPathForSelectedRow!.row]
+//            addNoteVC.update = true
+//            addNoteVC.selectedRow = selectedRow
+//        }
+//    }
+    
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let selectedRow = indexPath.row
+        print(selectedRow)
         
-        let vc = segue.destination as! AddNoteViewController
-        
-        if segue.identifier == "editNote" {
-            vc.note = Notes.shared.notesArray[table.indexPathForSelectedRow!.row] 
-            vc.update = true
+        if let addNoteVC = storyboard?.instantiateViewController(identifier: "addNote") as? AddNoteViewController {
+            addNoteVC.note = Notes.shared.notesArray[selectedRow]
+            addNoteVC.selectedRow = selectedRow
+            addNoteVC.update = true
+            navigationController?.pushViewController(addNoteVC, animated: true)
         }
     }
     
@@ -44,5 +59,12 @@ class AllNotesViewController: UIViewController, UITableViewDelegate, UITableView
         cell.detailTextLabel?.text = Notes.shared.notesArray[indexPath.row].noteBody
         return cell
     }
+    
+//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+//        selectedRow = indexPath.row
+//        print(selectedRow ?? "error in allVC")
+//    }
+    
+    
 }
 

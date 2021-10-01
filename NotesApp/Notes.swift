@@ -40,8 +40,10 @@ class Notes {
         notesArray.append(note)
     }
     
-    func updateNote(title: String, body: String) {
-        let note = Note(noteTitle: title, noteBody: body)
+    func updateNote(title: String, body: String, index: Int) {
+        //let note = Note(noteTitle: title, noteBody: body)
+        notesArray[index].noteTitle = title
+        notesArray[index].noteBody = body
     }
 }
 

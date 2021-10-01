@@ -11,6 +11,8 @@ class AddNoteViewController: UIViewController {
     
     var note: Notes.Note?
     
+    var selectedRow: Int?
+    
     var update = false
     
     let defaults = UserDefaults.standard
@@ -24,6 +26,7 @@ class AddNoteViewController: UIViewController {
         if update == true {
             titleTextField.text = note?.noteTitle
             bodyTextField.text = note?.noteBody
+            //print(selectedRow ?? "Error in addVC")
         }
         
     }
@@ -34,7 +37,7 @@ class AddNoteViewController: UIViewController {
         let body = bodyTextField.text!
         
         if update == true {
-            Notes.shared.updateNote(title: title, body: body)
+            Notes.shared.updateNote(title: title, body: body, index: selectedRow!)
         } else {
             Notes.shared.saveNote(title: title, body: body)
         }
