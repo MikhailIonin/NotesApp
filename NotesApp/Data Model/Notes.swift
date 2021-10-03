@@ -18,8 +18,8 @@ class Notes {
         var noteBody: String
     }
     
+    //Get from / set data in UserDefaults
     var notesArray: [Note] {
-        
         get {
             if let data = defaults.value(forKey: "notesArray") as? Data {
                 return try! PropertyListDecoder().decode([Note].self, from: data)
@@ -27,7 +27,6 @@ class Notes {
                 return [Note]()
             }
         }
-        
         set {
             if let data = try? PropertyListEncoder().encode(newValue) {
                 defaults.set(data, forKey: "notesArray")
@@ -35,21 +34,25 @@ class Notes {
         }
     }
     
+    //Save new note
     func saveNote(title: String, body: String) {
         let note = Note(noteTitle: title, noteBody: body)
         notesArray.append(note)
     }
     
+    //Update existing note
     func updateNote(title: String, body: String, index: Int) {
-        //let note = Note(noteTitle: title, noteBody: body)
         notesArray[index].noteTitle = title
         notesArray[index].noteBody = body
     }
 }
 
+//Keys for UserDefaults
 struct KeyDefaults {
     static let title = "title"
     static let body = "body"
 }
+
+
 
 

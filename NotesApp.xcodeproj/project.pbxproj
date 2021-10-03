@@ -41,6 +41,32 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		3D46E6932709DFCA00F4E32D /* Data Model */ = {
+			isa = PBXGroup;
+			children = (
+				3DB2B0322706B66900D3A517 /* Notes.swift */,
+			);
+			path = "Data Model";
+			sourceTree = "<group>";
+		};
+		3D46E6952709DFD700F4E32D /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				3DB2B0222706B11900D3A517 /* Main.storyboard */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		3D46E6972709DFFE00F4E32D /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				3DB2B01E2706B11900D3A517 /* SceneDelegate.swift */,
+				3DB2B0252706B11D00D3A517 /* Assets.xcassets */,
+				3DB2B0272706B11D00D3A517 /* LaunchScreen.storyboard */,
+			);
+			path = "Supporting Files";
+			sourceTree = "<group>";
+		};
 		3DB2B0102706B11900D3A517 = {
 			isa = PBXGroup;
 			children = (
@@ -61,12 +87,10 @@
 			isa = PBXGroup;
 			children = (
 				3DB2B01C2706B11900D3A517 /* AppDelegate.swift */,
-				3DB2B01E2706B11900D3A517 /* SceneDelegate.swift */,
+				3D46E6932709DFCA00F4E32D /* Data Model */,
+				3D46E6952709DFD700F4E32D /* Views */,
 				3DB2B03B2707171E00D3A517 /* Controllers */,
-				3DB2B0222706B11900D3A517 /* Main.storyboard */,
-				3DB2B0322706B66900D3A517 /* Notes.swift */,
-				3DB2B0252706B11D00D3A517 /* Assets.xcassets */,
-				3DB2B0272706B11D00D3A517 /* LaunchScreen.storyboard */,
+				3D46E6972709DFFE00F4E32D /* Supporting Files */,
 				3DB2B02A2706B11D00D3A517 /* Info.plist */,
 			);
 			path = NotesApp;

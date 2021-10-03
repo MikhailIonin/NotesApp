@@ -9,16 +9,17 @@ import UIKit
 
 class AllNotesViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
+    //MARK: - IB Outlets
     @IBOutlet weak var table: UITableView!
     
-    //var selectedRow: Int?
-    
+    //MARK: - Life Cycles methods
     override func viewDidLoad() {
         super.viewDidLoad()
         
         table.delegate = self
         table.dataSource = self
-        
+    
+        Notes.shared.saveNote(title: "Заметка 1", body: "Текст первой заметки")
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -26,16 +27,7 @@ class AllNotesViewController: UIViewController, UITableViewDelegate, UITableView
         self.table.reloadData()
     }
     
-//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-//
-//        guard let addNoteVC = segue.destination as? AddNoteViewController else { return }
-//
-//        if segue.identifier == "editNote" {
-//            addNoteVC.note = Notes.shared.notesArray[table.indexPathForSelectedRow!.row]
-//            addNoteVC.update = true
-//            addNoteVC.selectedRow = selectedRow
-//        }
-//    }
+    //MARK: - UITableView Delegates
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selectedRow = indexPath.row
@@ -59,10 +51,6 @@ class AllNotesViewController: UIViewController, UITableViewDelegate, UITableView
         return cell
     }
     
-//    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-//        selectedRow = indexPath.row
-//        print(selectedRow ?? "error in allVC")
-//    }
     
     func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
         return .delete
@@ -76,6 +64,5 @@ class AllNotesViewController: UIViewController, UITableViewDelegate, UITableView
             table.endUpdates()
         }
     }
-    
 }
 

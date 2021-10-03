@@ -9,15 +9,18 @@ import UIKit
 
 class AddNoteViewController: UIViewController, UITextViewDelegate {
     
-    var note: Notes.Note?
-    var selectedRow: Int?
-    var update = false
-    
-    let defaults = UserDefaults.standard
-    
+    //MARK: - IB Outlets
     @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var bodyTextView: UITextView!
     
+    //MARK: - Properties
+    var note: Notes.Note?
+    var selectedRow: Int?
+    var update = false //determines func for transfer data to UserDefaults
+    
+    let defaults = UserDefaults.standard
+    
+    //MARK: - Life Cycles methods
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -28,10 +31,11 @@ class AddNoteViewController: UIViewController, UITextViewDelegate {
             bodyTextView.text = note?.noteBody
             
         } else {
+            //Placeholder for bodyTextView
             bodyTextView.text = "Enter note text here"
             bodyTextView.textColor = UIColor.lightGray
         }
-        
+        //Set keyboard toolbar with "Done" button
         let toolBar = UIToolbar(frame: CGRect(x: 0, y: 0, width: view.frame.size.width, height: 50))
         let flexibleSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace,
                                             target: self,
@@ -46,25 +50,7 @@ class AddNoteViewController: UIViewController, UITextViewDelegate {
         bodyTextView.inputAccessoryView = toolBar
     }
     
-    @objc private func didTapDone() {
-        titleTextField.resignFirstResponder()
-        bodyTextView.resignFirstResponder()
-    }
-    
-    func textViewDidBeginEditing(_ textView: UITextView) {
-        if bodyTextView.textColor == UIColor.lightGray {
-            bodyTextView.text = nil
-            bodyTextView.textColor = .black
-        }
-    }
-    
-    func textViewDidEndEditing(_ textView: UITextView) {
-        if bodyTextView.text.isEmpty {
-            bodyTextView.text = "Enter note text here"
-            bodyTextView.textColor = .lightGray
-        }
-    }
-    
+    //MARK: - IB Actions
     @IBAction func saveButtonPressed(_ sender: UIBarButtonItem) {
         
         let title = titleTextField.text!
@@ -81,7 +67,13 @@ class AddNoteViewController: UIViewController, UITextViewDelegate {
         }
         self.navigationController?.popViewController(animated: true)
     }
+    //MARK: - Methods
+    @objc private func didTapDone() {
+        titleTextField.resignFirstResponder()
+        bodyTextView.resignFirstResponder()
+    }
     
+    //Writes data to UserDefaults
     func writeToMemory(title: String, body: String, update: Bool) {
         if update == true {
             Notes.shared.updateNote(title: title, body: body, index: selectedRow!)
@@ -89,9 +81,28 @@ class AddNoteViewController: UIViewController, UITextViewDelegate {
             Notes.shared.saveNote(title: title, body: body)
         }
     }
+    
+    //MARK: - UITextView Delegates
+    //Erase placeholder in bodyTextView when start typing
+    func textViewDidBeginEditing(_ textView: UITextView) {
+        if bodyTextView.textColor == UIColor.lightGray {
+            bodyTextView.text = nil
+            bodyTextView.textColor = .black
+        }
+    }
+    
+    //return placeholder in bodyTextView if empty
+    func textViewDidEndEditing(_ textView: UITextView) {
+        if bodyTextView.text.isEmpty {
+            bodyTextView.text = "Enter note text here"
+            bodyTextView.textColor = .lightGray
+        }
+    }
 }
 
+//MARK: - Extensions
 extension AddNoteViewController {
+    //Alert controller
     private func showAlert(with title: String, and message: String) {
         let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
         let okAction = UIAlertAction(title: "Ok", style: .default)
