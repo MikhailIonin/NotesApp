@@ -39,7 +39,6 @@ class AllNotesViewController: UIViewController, UITableViewDelegate, UITableView
     
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let selectedRow = indexPath.row
-        print(selectedRow)
         
         if let addNoteVC = storyboard?.instantiateViewController(identifier: "addNote") as? AddNoteViewController {
             addNoteVC.note = Notes.shared.notesArray[selectedRow]
@@ -65,6 +64,18 @@ class AllNotesViewController: UIViewController, UITableViewDelegate, UITableView
 //        print(selectedRow ?? "error in allVC")
 //    }
     
+    func tableView(_ tableView: UITableView, editingStyleForRowAt indexPath: IndexPath) -> UITableViewCell.EditingStyle {
+        return .delete
+    }
+    
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+            table.beginUpdates()
+            Notes.shared.notesArray.remove(at: indexPath.row)
+            table.deleteRows(at: [indexPath], with: .fade)
+            table.endUpdates()
+        }
+    }
     
 }
 
